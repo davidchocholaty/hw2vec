@@ -1,3 +1,4 @@
+pygraphviz
 matplotlib
 networkx
 scikit-image
