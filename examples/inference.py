@@ -76,6 +76,12 @@ trainer.build(model)
 #trainer.evaluate(cfg.epochs, train_loader, test_loader)
 #vis_loader = DataLoader(data_proc.get_graphs(), shuffle=False, batch_size=1)
 #trainer.visualize_embeddings(vis_loader, "./")
-inference_loader = DataLoader(data_proc.get_graphs(), shuffle=False, batch_size=cfg.batch_size)
-results = trainer.inference(inference_loader)
-print(results)
+inference_loader = DataLoader(all_pairs, shuffle=False, batch_size=1)
+
+loss, labels, _, preds = trainer.inference(inference_loader)
+
+print("Inference results: ")
+trainer.metric_calc(loss, labels, preds, header="inference")
+
+#results = trainer.inference(inference_loader)
+#print(results)
